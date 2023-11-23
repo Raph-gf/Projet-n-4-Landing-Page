@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --page-horizontal-padding: 135px;
+        --section-vertical-padding: 140px;
+        --cards-padding: 30px;
+        font-size: 20px;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      .section-1 {
+        height: 300px;
+        background-color: bisque;
+      }
+
+      .topDiv {
+        display: flex;
+        background-color: #e9f4ff;
+        padding: 0 var(--page-horizontal-padding);
+      }
+
+      .topDiv h2 {
+        /* font-size en rem = par rapport au root de notre page. 2rem = 2 * 20px = 40px */
+        font-size: 2rem;
+      }
+
+      .topDiv .textPart {
+        flex-basis: 60%;
+        /* width: 50%; marche aussi */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .topDiv .imagePart {
+        flex-basis: 40%;
+        padding-bottom: 50px;
+      }
+
+      .topDiv .imagePart img {
+        max-width: 100%;
+        display: block;
+        position: relative;
+        top: 80px;
+      }
+
+      .bottomSection {
+        display: grid;
+        gap: var(--cards-padding);
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: var(--section-vertical-padding) var(--page-horizontal-padding);
+      }
+
+      .card {
+        background-color: #e9f4ff;
+      }
+
+      .card .textPart {
+        padding: 30px;
+        font-size: 50px;
+      }
+
+      .card .textPart h3 {
+        /* font-size en em = par rapport au parent immédiat. 0.5em = 0.5 * 50px = 25px */
+        font-size: 0.5em;
+      }
+
+      .card .textPart .text {
+        font-size: 0.3em;
+      }
+
+      .card .imagePart img {
+        display: block;
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .card button {
+        background-color: cadetblue;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 10px;
+        border-radius: 10px;
+        padding: 1em 1em;
+      }
+
+      .card button.big {
+        font-size: 20px;
+      }
+
+      .quote-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--section-vertical-padding);
+      }
+
+      .button-quote {
+        display: block;
+        background-color: darkblue;
+        color: white;
+        border: none;
+        padding: 15px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .quote-section button .mobile-text {
+        display: none;
+      }
+
+      .quote-section .mobile-text-expanded {
+        display: none;
+      }
+
+      .quote-section.expanded .mobile-text-expanded {
+        display: inline;
+      }
+
+      .quote-section.expanded .mobile-text-collapsed {
+        display: none;
+      }
+
+      @media screen and (max-width: 1439px) {
+        :root {
+          font-size: 15px;
+        }
+
+        .bottomSection {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        :root {
+          font-size: 10px;
+        }
+
+        .topDiv {
+          flex-direction: column;
+        }
+
+        .topDiv .imagePart img {
+          top: 0px;
+        }
+
+        .bottomSection {
+          grid-template-columns: 1fr;
+        }
+
+        .quote-section button .mobile-text {
+          display: inline;
+        }
+
+        .quote-section button .desktop-text {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="section-1"></section>
+
+      <section class="topDiv">
+        <div class="textPart">
+          <h2>This is a title coucou</h2>
+        </div>
+        <div class="imagePart">
+          <img src="image.jpg" alt="" />
+        </div>
+      </section>
+
+      <section class="section-1"></section>
+
+      <section class="bottomSection">
+        <div class="card">
+          <div class="imagePart">
+            <img src="image.jpg" alt="" />
+          </div>
+          <div class="textPart">
+            <h3>Basic rule of running web agency business</h3>
+            <div class="text">
+              This is the text here. This is the text here. This is the text
+              here.
+            </div>
+            <button>Click me !</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="imagePart">
+            <img src="image.jpg" alt="" />
+          </div>
+          <div class="textPart">
+            <h3>Basic rule of running web agency business</h3>
+            <div class="text">
+              This is the text here. This is the text here. This is the text
+              here.
+            </div>
+            <button class="big">Click me !</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="imagePart">
+            <img src="image.jpg" alt="" />
+          </div>
+          <div class="textPart">
+            <h3>Basic rule of running web agency business</h3>
+            <div class="text">
+              This is the text here. This is the text here. This is the text
+              here.
+            </div>
+            <button>Click me !</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="quote-section">
+        <button class="button-quote">
+          <span class="desktop-text">Request a quote</span>
+          <span class="mobile-text">
+            <span class="mobile-text-collapsed">Show more</span>
+            <span class="mobile-text-expanded">Show less</span>
+          </span>
+        </button>
+      </section>
+    </div>
+
+    <script>
+      const quoteButton = document.querySelector(".button-quote");
+      const quoteSection = document.querySelector(".quote-section");
+
+      quoteButton.addEventListener("click", function () {
+        quoteSection.classList.toggle("expanded");
+      });
+    </script>
+  </body>
+</html>
